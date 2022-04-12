@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<div class="col-md-12 my-col-3" data-aos="zoom-in-down" style="height: auto">
+
+			<h3 style="margin-top: 20px">Ajouter un cocktail</h3>
+			<form id="commentForm" method="post" action="{{ url_for('ajout_cocktail') }}">
+				<div class="form-group mt-2">
+					<label for="cocktail_name">Nom de ton cocktail :</label>
+					<input class="form-control" name="cocktail_name" id="cocktail_name" style="margin-bottom: 15px" minlength="2" maxlength="40" required></input><br><br>
+					<label for="type">Liste des ingrédients :</label>
+					<textarea class="form-control" name="type" id="type" rows="4" minlength="2" maxlength="500" required></textarea><br><br>
+          <label for="quantities">Quantités :</label>
+					<textarea class="form-control" name="quantities" id="quatities" rows="4" minlength="2" maxlength="500" required></textarea><br><br>
+          <label for="preparation">Préparation :</label>
+					<textarea class="form-control" name="preparation" id="preparation" rows="4" minlength="2" maxlength="500" required></textarea><br><br>
+          <label for="difficulty">Difficulté :</label>
+          <select name="difficulty">
+              <option value="none" selected disabled hidden>Choix de difficulté</option>
+              <option  value="Très Facile">Très Facile</option>
+              <option  value="Facile">Facile</option>
+              <option  value="Moyen">Moyen</option>
+              <option  value="Difficile">Difficile</option>
+            </select><br><br>
+
+          <label for="cost">Coût :</label>
+          <select name="cost">
+              <option value="none" selected disabled hidden>Choix du coût</option>
+              <option  value="Bon marché"> Bon marché</option>
+              <option  value="Moyen">Moyen</option>
+              <option  value="Cher">Cher</option>
+            </select><br><br>
+				</div>
+				<div class="col-auto">
+					<button form="commentForm" type="submit" class="btn btn-primary mb-2 mt-2">Soumettre le cocktail</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<div class="col-md-12 my-col-title" data-aos="zoom-in">
+			<h1 class="centered-text">Les meilleurs cocktails de l'INSA</h1>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-around my-subtitle">
+		<h2>Top 3 des meilleurs cocktails</h2>
+	</div>
+</div>
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<div class="card-deck">
+		  <div class="card" data-aos="fade-up" data-aos-delay="200">
+		  	<a class="my-link-2" href="{{ url_for('cocktail', id= favorite_cocktails[0]['id']) }}">
+			    <img class="card-img-top" src="{{ url_for('static', filename='asset/images/') }}{{ favorite_cocktails[0]['image'] }}" alt="Card image cap">
+			    <div class="card-body">
+			      <h3 class="card-title text-center">{{ favorite_cocktails[0]["name"] }}</h3>
+			    </div>
+		    </a>
+		  </div>
+		  <div class="card" data-aos="fade-up" data-aos-delay="400">
+		  	<a class="my-link-2" href="{{ url_for('cocktail', id = favorite_cocktails[1]['id']) }}">
+			    <img class="card-img-top" src="{{ url_for('static', filename='asset/images/') }}{{ favorite_cocktails[1]['image'] }}" alt="Card image cap" width = "300" height="500">
+			    <div class="card-body">
+			      <h3 class="card-title text-center">{{ favorite_cocktails[1]["name"] }}</h3>
+			    </div>
+		    </a>
+		  </div>
+
+		  <div class="card" data-aos="fade-up" data-aos-delay="600">
+		  	<a class="my-link-2" href="{{ url_for('cocktail', id = favorite_cocktails[2]['id']) }}">
+			    <img class="card-img-top" src="{{ url_for('static', filename='asset/images/') }}{{ favorite_cocktails[2]['image'] }}" alt="Card image cap">
+			    <div class="card-body">
+			      <h3 class="card-title text-center">{{ favorite_cocktails[2]["name"] }}</h3>
+			    </div>
+		    </a>
+		  </div>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

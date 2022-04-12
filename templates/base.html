@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page_title|default('Projet Prog Web') }}</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Pauline Lavainne, Leo Hermet Leroy, Lucie Schwoertzig et Macéo Valente">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+{% block head %}{% endblock %}
+  </head>
+  <body>
+
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-md navbar-light bg-light .d-block .d-md-none justify-content-between">
+        <a class="navbar-brand text-white" href="{{ url_for('index') }}">Accueil</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="{{ url_for('cocktails') }}">Cocktails</a></li>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="{{ url_for('contact') }}">Contact</a></li>
+            </li>
+          </ul>
+          <form method="POST" action="{{ url_for('reset_json') }}">
+            <div class="col-auto">
+      				<input type="submit" value="Reset" class="btn btn-primary mb-2 mt-2">
+      			</div>
+          </form>
+          <form class="" method="get" action="{{ url_for('cocktails') }}">
+            <input class="" placeholder="Cocktail, ingrédients, ..." type="text" name="pattern">
+            <button class="" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+{% block content %}{% endblock %}
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <footer class="text-white sticky-bottom">
+      <div class="text-center bg-light py-2">Pauline Lavainne, Leo Hermet Leroy, Lucie Schwoertzig et Macéo Valente
+      <div class="text-center bg-light py-2">
+        Étudiants en 4ème année <a href="https://www.insa-lyon.fr/" class="my-link" target="_blank" rel="noopener noreferrer">INSA Lyon</a> -
+        <a href="https://biosciences.insa-lyon.fr/" class="my-link" target="_blank" rel="noopener noreferrer">Département Biosciences</a> -
+        Bio-Informatique et Modélisation
+      </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

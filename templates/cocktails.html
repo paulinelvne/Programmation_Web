@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if cocktails is defined %}
+
+	{% if m == 0 and r == 0 %}
+
+	<div class="container my-container">
+		<div class="row justify-content-around">
+			<div class="col-md-12 my-col-title" data-aos="zoom-in">
+				<h1>Aucun cocktail trouvé.</h1>
+			</div>
+		</div>
+	</div>
+
+	{% endif %}
+
+	{% for i in range(m) %}
+	<div class="container my-container">
+		<div class="row justify-content-around">
+			<div class="card-deck">
+
+				{% for j in range(0 + 3*i, 3*(i+1)) %}
+
+				<div class="card" data-aos="fade-up">
+					<a class="my-link-2" href="{{ url_for('cocktail', id = cocktails[j]['id']) }}">
+						<img class="card-img-top" src="{{ url_for('static', filename='asset/images/') }}{{ cocktails[j]['image'] }}" alt="Card image cap">
+						<div class="card-body">
+							<h3 class="card-title text-center">{{ cocktails[j]["name"] }}</h3>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+
+
+	<div class="container my-container">
+		<div class="row justify-content-around">
+			<div class="card-deck">
+
+
+				{% for k in range(r) %}
+				{% set a = 3*m + k %}
+
+				<div class="card" data-aos="fade-up">
+					<a class="my-link-2" href="{{ url_for('cocktail', id = cocktails[a]['id']) }}">
+						<img class="card-img-top" src="{{ url_for('static', filename='asset/images/') }}{{ cocktails[a]['image'] }}" alt="Card image cap">
+						<div class="card-body">
+							<h3 class="card-title text-center">{{ cocktails[a]["name"] }}</h3>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+
+				<div class="card" data-aos="fade-up">
+					<a class="my-link-2" href="{{ url_for('ajouter') }}">
+						<img class="card-img-top" src="{{ url_for('static', filename='asset/images/') }}{{ 'images.png' }}" alt="Card image cap">
+						<div class="card-body">
+							<h3 class="card-title text-center">{{ "Ajout cocktail" }}</h3>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+{% if cocktail is defined%}
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<div class="col-md-12 my-col-title" data-aos="zoom-in">
+			<h1 class="centered-text">{{ cocktail["name"] }}</h1>
+		</div>
+	</div>
+</div>
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<div class="col-md-7 my-col" data-aos="fade-right" style="height: auto">
+			<h3>Coût</h3>
+			<ul>
+				<h6><strong>{{ cocktail['cout'] }}</strong></h6>
+			</ul>
+
+			<h3>Difficulté</h3>
+			<ul>
+				<h6><strong>{{ cocktail['difficulte'] }}</strong></h6>
+			</ul>
+
+			<h3>Ingrédients</h3>
+			<ul>
+				{% for i in range(cocktail['ingredients']|length) %}
+				<li><h6>{{ cocktail['quantities'][i] }} <strong>{{ cocktail['ingredients'][i] }}</strong></h6></li>
+				{% endfor %}
+			</ul>
+
+		</div>
+		<div class="col-md-5 img-col" data-aos="fade-left" style="display:flex; align-items:center;">
+			<a href="{{ url_for('static', filename='asset/images/') }}{{ cocktail['image'] }}" target="_blank">
+				<img class="recipe-img" src="{{ url_for('static', filename='asset/images/') }}{{ cocktail['image'] }}" alt="dish">
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<div class="col-md-12 my-col" data-aos="zoom-in-down" style="height: auto">
+			<h3>Préparation</h3>
+
+			<ol>
+				{% for step in cocktail['preparation'] %}
+				<li class="my-li"><h4>{{ step }}</h4></li>
+				{% endfor %}
+			</ol>
+
+		</div>
+	</div>
+</div>
+
+<div class="container my-container">
+	<div class="row justify-content-around">
+		<form method="POST" action="{{ url_for('supprimer_cocktail',id=cocktail['id'])}}">
+			<div class="col-auto">
+				<input type="submit" value="Supprimer le cocktail" class="btn btn-primary mb-2 mt-2">
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endif %}
+
+{% endblock %}
