@@ -18,8 +18,8 @@
           <label for="preparation">Préparation :</label>
 					<textarea class="form-control" name="preparation" id="preparation" rows="4" minlength="2" maxlength="500" required></textarea><br><br>
           <label for="difficulty">Difficulté :</label>
-          <select name="difficulty">
-              <option value="none" selected disabled hidden>Choix de difficulté</option>
+          <select name="difficulty" required>
+              <option value="" selected disabled hidden>Choix de difficulté</option>
               <option  value="Très Facile">Très Facile</option>
               <option  value="Facile">Facile</option>
               <option  value="Moyen">Moyen</option>
@@ -27,8 +27,8 @@
             </select><br><br>
 
           <label for="cost">Coût :</label>
-          <select name="cost">
-              <option value="none" selected disabled hidden>Choix du coût</option>
+          <select name="cost" required>
+              <option value="" selected disabled hidden>Choix du coût</option>
               <option  value="Bon marché"> Bon marché</option>
               <option  value="Moyen">Moyen</option>
               <option  value="Cher">Cher</option>
